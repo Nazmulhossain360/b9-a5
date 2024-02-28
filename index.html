@@ -100,19 +100,20 @@ url('./images/banner.png');">
 
 
 <!-- Ticket dashboard start -->
-<div class="dashboard h-[355px] bg-white w-[96%] mx-auto  flex my-8  rounded-xl">
+<div class="dashboard lg:h-[355px] bg-white w-ful lg:w-[96%] mx-auto  flex flex-col justify-center items-center lg:flex-row my-8  rounded-xl">
 
-  <div class="dash-left w-[80%]">
-    <div class="card-heading flex justify-around items-center">
+  <div class="dash-left w-full lg:w-[80%]">
+    <div class="card-heading flex justify-between items-center">
       <div class="bus-logo-text flex m-4 justify-start gap-3">
-        <img class="" src="./images/bus-logo.png" alt="">
-        <div class="busText flex flex-col justify-center ">
-          <p class="font-bold text-2xl ">Greenline Paribahan</p>
-          <p class="font-normal text-gray-500">Coach-009-web ! Ac_Economy</p>
+        <img class="w-[40px] h-[25px] lg:w-16 lg:h-12  object-cover" src="./images/bus-logo.png" alt="">
+        <div class="busText flex flex-col justify-center items-center ">
+          <p class="font-bold  lg:text-2xl ">Greenline Paribahan</p>
+          <p class="font-normal hidden lg:block text-gray-500">Coach-009-web ! Ac_Economy</p>
         </div>
       </div>
      <div class="availableSeat">
-      <button class="btn bg-green-200 text-[#1DD100]"><img class="inline mx-2" src="./images/seat-green.png" alt=""> <span id="available-seats">8</span>seats left </button>
+      <button class="btn w-36 lg:w-40 bg-green-200 text-[#1DD100]"><img class="inline mx-2 w-4 h-4 lg:w-5 lg:h-5" 
+         src="./images/seat-green.png" alt=""><span id="available-seats">8</span>seats left</button>
      </div>
     </div>
     <div class="time-location bg-[#F7F8F8] p-6 mx-4 rounded-lg my-4">
@@ -133,17 +134,17 @@ url('./images/banner.png');">
     </div>
     </div>
   </div>
-  <img class="h-[360px]" src="./images/info-devider.png" alt="">
-<div class="dash-right w-[20%] flex flex-col justify-center items-center">
+  <img class="h-[360px] hidden lg:block " src="./images/info-devider.png" alt="">
+<div class="dash-right w-full lg:w-[20%] flex flex-col justify-center items-center">
 <img src="./images/fare.png" alt="">
-<p class="text-3xl font-bold">550 Taka</p>
-<p class="text-2xl text-gray-500 font-semibold">Per seat</p>
+<p class=" text-xl lg:text-3xl font-bold">550 Taka</p>
+<p class="text-2xl text-gray-500 font-semibold my-2">Per seat</p>
 </div>
 
 </div>
 
-<div class="seat-select-area  bg-white w-[96%] mx-auto p-8 flex">
-  <div class="seat-side w-[55%]">
+<div class="seat-select-area  bg-white w-[96%] mx-auto p-8 flex flex-col lg:flex-row rounded-xl my-4">
+  <div class="seat-side w-full lg:w-[55%]">
     <p class="text-2xl font-semibold">Select your seat</p>
     <hr class="border border-green-400 border-dashed w-[98%] mx-auto my-2">
 
@@ -188,7 +189,7 @@ url('./images/banner.png');">
     
   </div>
   <p class="border border-green-400 border-dashed mx-4 my-2"></p>
-  <div class="calculate-area w-[40%]">
+  <div class="calculate-area w-full lg:w-[40%]">
     <p class="text-2xl font-semibold">Select your seat</p>
     <hr class="border border-green-400 border-dashed w-[98%] mx-auto my-2">
     <div class="seat-calculate bg-[#F7F8F8] p-4 rounded-lg">
@@ -211,7 +212,7 @@ url('./images/banner.png');">
         <p class="font-bold">Total Price</p>
         <p class="font-bold">BDT <span id="total-price">1100</span></p>
       </div>
-    <div class="flex w-96 rounded-lg bg-white">
+    <div class="flex w-full lg:w-96 rounded-lg bg-white">
       <input class="w-full p-2 my-2 h-12  rounded-lg" type="text" placeholder="Have any coupon?">
       <button class="btn bg-green-400 text-white mt-2 mx-4 outline-none">Apply</button>
     </div>
@@ -219,6 +220,24 @@ url('./images/banner.png');">
       <p class="font-bold">Grand Total </p>
       <p class="font-bold">BDT <span id="grand-total">1100</span></p>
     </div>
+    <!-- Open the modal using ID.showModal() method -->
+<button class="btn w-full bg-green-400 text-center" onclick="my_modal_5.showModal()">Next</button>
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box flex flex-col justify-center items-center">
+    <img src="./images/success.png" alt="">
+    <h3 class="font-bold text-lg text-green-400">SUCCESS</h3>
+    <p class=" font-bold">Thank you for Booking Our Bus Seats. </p>
+     <p class="font-bold text-center"> We are working hard to find the best service and deals for you. </p>
+      Shortly you will find a confirmation in your email.</p>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn w-40 rounded-3xl bg-green-400 text-white">Continue</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
     </div>
    
 
