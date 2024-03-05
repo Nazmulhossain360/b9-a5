@@ -1,3 +1,10 @@
 body {
   font-family: "Raleway", sans-serif;
 }
+#selected-ticket-details  li{
+display: flex;
+gap: 20px;
+justify-content: space-between;
+text-align: center;
+list-style-type: none;
+}
