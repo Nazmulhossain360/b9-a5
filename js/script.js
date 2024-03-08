@@ -15,22 +15,68 @@ function setTextElementValueById(elementId, value){
     element.innerText = value;
 }
 
-function selectionFinished(){
-    
+function totalPrice(elementId,value){
+    const totalPrice = document.getElementById(elementId).innerText;
+    const convertedTotalPrice = parseInt(totalPrice);
+    const sum = convertedTotalPrice + parseInt(value);
+
+    setTextElementValueById('total-price', sum)
 }
+
+function updateGrandTotalPrice(){
+    const totalPrice = document.getElementById('total-price').innerText;
+    const convertedTotalPrice = parseInt(totalPrice);
+    document.getElementById('grand-total').innerText = convertedTotalPrice;
+   
+}
+
+function updateGrandTotalPrice(status){
+    if(status == undefined){
+        const totalPrice = document.getElementById('total-price').innerText;
+        const convertedTotalPrice = parseInt(totalPrice);
+        document.getElementById('grand-total').innerText=convertedTotalPrice;
+    }else{
+        const couponCode = document.getElementById('coupon-code').value;
+        const selectedSeat = parseInt(document.getElementById('selected-seat').innerText);
+
+        if(selectedSeat < 4){
+            alert('please select 4 seat to get discount.');
+
+        }else if(selectedSeat===4 && couponCode == "NEW15"){
+            const totalPrice = document.getElementById('total-price').innerText;
+            const convertedTotalPrice = parseInt(totalPrice);
+            const afterDiscountPrice = convertedTotalPrice*.85;
+            document.getElementById('grand-total').innerText=afterDiscountPrice;
+            console.log(afterDiscountPrice)
+        }else if(selectedSeat===4 && couponCode == "couple20"){
+            const totalPrice = document.getElementById('total-price').innerText;
+            const convertedTotalPrice = parseInt(totalPrice);
+            const afterDiscountPrice = convertedTotalPrice*.80;
+            document.getElementById('grand-total').innerText=afterDiscountPrice;
+            console.log(afterDiscountPrice)
+        }else if(couponCode == ""){
+            const totalPrice = document.getElementById('total-price').innerText;
+            const convertedTotalPrice = parseInt(totalPrice);
+            document.getElementById('grand-total').innerText=convertedTotalPrice;
+        } else{
+            alert('please enter valid coupon code.');
+        }             
+    }                
+}
+
 
 // utility script End
 
 
 
 // ---------------------------
-// Function to handle seat selection
+
 function selectSeat(seatId) {
     const seatButton = document.getElementById(seatId);
     // const seatClass = document.getElementById('seat-name');
     // const seatClass = document.getElementById(' ');
 
-// -----------
+// -------
 const seats = getTextElementValueById('available-seats');
     const availableSeats  = seats - 1;
     setTextElementValueById('available-seats', availableSeats);
@@ -39,7 +85,7 @@ const seats = getTextElementValueById('available-seats');
     const selectedSeat = selected + 1;
     setTextElementValueById('selected-seat',selectedSeat);
 
-// --------------
+// --------
 
     if (seatButton.classList.contains('text-gray-500')) {
         // Check if maximum seats selected
@@ -51,7 +97,7 @@ const seats = getTextElementValueById('available-seats');
             return;
               
         }
-
+        
         seatButton.classList.remove('text-gray-500');
         seatButton.classList.add('bg-green-400', 'text-white');
 
@@ -71,24 +117,22 @@ const seats = getTextElementValueById('available-seats');
 
         li.appendChild(p);
         li.appendChild(p1);
-        li.appendChild(p2);
+        li.appendChild(p2);      
         selectedTicketDetails.appendChild(li);
 
-        const totalPrice = document.getElementById('total-price').innerText;
-        const convertedTotalPrice =parseInt(totalPrice)
 
-        const sum = convertedTotalPrice + parseInt(seatPrice)
+        totalPrice('total-price', seatPrice);
+        updateGrandTotalPrice();
 
-        setTextElementValueById('total-price',sum);
-
-        console.log( typeof(convertedTotalPrice))
-
-        
+        // updateGrandTotalPrice('apply-btn');
+       
+     
+      
 
   // Disable other seat buttons if four seats are selected
   const seatButtons = document.querySelectorAll('add-seat');
   seatButtons.forEach(button => {
-    if (!selectedSeats.includes(button.id)) {
+    if (!selectedSeats.includes(button.seatId)) {
       button.disabled = selectedSeats.length === 4;
     }
   });
@@ -106,27 +150,6 @@ const seats = getTextElementValueById('available-seats');
         seatClass.innerHTML = selectedSeats;
     }
 }
-
-
-// function selectSeat(seatId) {
-//   const seatButton = document.getElementById(seatId);
-
-//   // Check if the seat is already selected
-//   const seatIndex = selectedSeats.indexOf(seatId);
-//   if (seatIndex !== -1) {
-//     seatButton.classList.remove('bg-green-500');
-//     selectedSeats.splice(seatIndex, 1);
-//   } else {
-//     // Check if the maximum seat limit is reached
-//     if (selectedSeats.length < 4) {
-//       seatButton.classList.add('bg-green-500');
-//       selectedSeats.push(seatId);
-//     } else {
-//       // Notify user if the maximum limit is reached
-//       alert('You have already selected four seats.');
-//     }
-//   }
-
 
 
 
